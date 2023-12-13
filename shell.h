@@ -41,6 +41,7 @@ void execute_command(const char *command);
  * 
  *
  */
+void find(info_t *);
 void fork(info_t *);
 #endif /* SHELL_H */
 
