@@ -36,11 +36,6 @@ void read_command(char *command, size_t size);
  * @command: The command to execute.
  */
 void execute_command(const char *command);
-
-/**
- * 
- *
- */
 void find(info_t *);
 void fork(info_t *);
 #endif /* SHELL_H */
