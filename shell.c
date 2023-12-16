@@ -10,24 +10,13 @@
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *line;
-	char buffer[1024];
-
-	if (isatty(STDIN_FILENO))
+	
+	while (1)
 	{
-		while (1)
-		{
+		if (isatty(STDIN_FILENO))
 			prompt();
-			line = _getline();
-			process_terminal_command(line);
-			free(line);
-		}
-	}
-	else
-	{
-		if (fgets(buffer, 1024, stdin) != NULL)
-		{
-			process_terminal_command(buffer);
-		}
+		line = _getline();
+		process_terminal_command(line);
 	}
 	return (EXIT_SUCCESS);
 }

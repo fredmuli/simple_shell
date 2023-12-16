@@ -21,6 +21,7 @@ void process_terminal_command(char *line)
 		exit(EXIT_FAILURE);
 	}
 	split_str_to_argv(line, "\n ", argv, argc);
+	free(line);
 	command_switch(argc, argv, argv[0], env);
 	free_array(argv);
 }
