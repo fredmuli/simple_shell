@@ -1,21 +1,29 @@
 #include "shell.h"
 
 /**
- * main - Entry point
+ * main - entry point
+ * @ac: arg count
+ * @av: arg vector
  *
- * Return: Always 0.
+ * Return: 0
  */
-
-int main(void)
+int main(int ac __attribute__((unused)), char **av)
 {
-	char command[128];
+	char *line;
 
-	while (true)
+	if (isatty(STDIN_FILENO))
 	{
-		display_prompt();
-		read_command(command, sizeof(command));
-		execute_command(command);
+		while (1)
+		{
+			prompt();
+			line = _getline();
+			process_terminal_command(line);
+			free(line);
+		}
 	}
-
-	return (0);
+	else
+	{
+		printf("Standard input is not associated with terminal\n");
+	}
+	return (EXIT_SUCCESS);
 }
