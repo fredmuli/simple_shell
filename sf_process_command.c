@@ -55,14 +55,15 @@ void create_child_process(char **argv, char **env)
 		{
 			perror("Error: waitpid failed");
 		}
-		if (WIFEXITED(status))
-		{
-			printf("Child process exited normally\n");
-		}
-		else
-		{
-			printf("Child process did not exit normally\n");
-		}
+		/**
+		 *if (WIFEXITED(status))
+		 *{
+		 *	printf("Child process exited normally\n");
+		 *}
+		 *else
+		 *{
+		 *	printf("Child process did not exit normally\n");
+		 */
 	}
 }
 
