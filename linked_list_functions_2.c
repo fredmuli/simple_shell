@@ -28,7 +28,6 @@ void free_from_head(list_t *node)
 	{
 		next = current->next;
 		free(current->str);
-		free(current->len);
 		free(current);
 		current = next;
 	}

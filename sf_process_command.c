@@ -26,15 +26,6 @@ void process_terminal_command(char *line)
 }
 
 /**
- * process_shell_command - process shell non interactive commands.
- * @argv: argument vectors
- */
-void process_shell_command(char **argv)
-{
-	char **env = environ;
-}
-
-/**
  * create_child_process - create child process
  * @argv: argument vector
  * @env: environment variables
@@ -55,6 +46,7 @@ void create_child_process(char **argv, char **env)
 	if (child_pid == 0)
 	{
 		execute_commmand(argv, env);
+		free_array_exit(argv);
 	}
 	else
 	{
@@ -72,7 +64,6 @@ void create_child_process(char **argv, char **env)
 			printf("Child process did not exit normally\n");
 		}
 	}
-	free_array(argv);
 }
 
 /**
@@ -101,14 +92,14 @@ void execute_commmand(char **argv, char **env)
  */
 void command_switch(int argc, char **argv, char *cmd, char **env)
 {
-	if (strcmp(argv[0], "exit") == 0)
+	if (strcmp(cmd, "exit") == 0)
 		exit_shell(argv, argc);
-	else if (strcmp(argv[0], "env") == 0)
-		print_env(argv, env);
-	else if (strcmp(argv[0], "getenv") == 0)
+	else if (strcmp(cmd, "env") == 0)
+		print_env(env);
+	else if (strcmp(cmd, "getenv") == 0)
 		print_env_var(argv, env);
-	else if (strcmp(argv[0], "getpath") == 0)
-		print_path(argv, env);
+	else if (strcmp(cmd, "getpath") == 0)
+		print_path(env);
 	else
 		create_child_process(argv, env);
 }

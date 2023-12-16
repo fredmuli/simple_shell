@@ -15,7 +15,7 @@ int get_argc(char *line, const char *delim)
 
 	token = strtok(line_cpy, delim);
 	count++;
-	while (token = strtok(NULL, delim))
+	while ((token = strtok(NULL, delim)))
 		count++;
 	free(line_cpy);
 	return (count);

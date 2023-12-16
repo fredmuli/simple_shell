@@ -40,14 +40,13 @@ list_t *get_path_list(char **env);
 void prompt(void);
 char *_getline(void);
 void process_terminal_command(char *line);
-void process_shell_command(char **argv);
 void create_child_process(char **argv, char **env);
 void execute_commmand(char **argv, char **env);
 void command_switch(int argc, char **argv, char *cmd, char **env);
 void exit_shell(char **argv, int argc);
-void print_env(char **argv, char **env);
+void print_env(char **env);
 void print_env_var(char **argv, char **env);
-void print_path(char **argv, char **env);
+void print_path(char **env);
 
 /* Utility Functions */
 int get_argc(char *line, const char *delim);
@@ -57,7 +56,6 @@ int line_is_all_space(char *line);
 char *_get_env(char **env, const char *name);
 
 void free_array(char **buffer);
-void free_narray(char **buffer, int buffer_size);
 void free_array_exit(char **buffer);
 
 #endif /*SHELL_H*/

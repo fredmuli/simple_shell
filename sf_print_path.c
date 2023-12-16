@@ -2,10 +2,9 @@
 
 /**
  * print_path - print PATH list
- * @argv: argument vector
  * @env: environment variables
  */
-void print_path(char **argv, char **env)
+void print_path(char **env)
 {
 	list_t *head = get_path_list(env);
 

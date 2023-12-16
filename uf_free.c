@@ -21,26 +21,6 @@ void free_array(char **buffer)
 }
 
 /**
- * free_narray - Frees memory allocated to array
- * @buffer: array of pointers
- * @buffer_size: size of array
- *
- * Return: Nothing
- */
-void free_narray(char **buffer, int buffer_size)
-{
-	unsigned int i = 0;
-
-	if (buffer == NULL)
-		return;
-	for (i = 0; i < buffer_size; i++)
-	{
-		free(buffer[i]);
-	}
-	free(buffer);
-}
-
-/**
  * free_array_exit - Frees memory allocated to array
  * @buffer: array of pointers
  *

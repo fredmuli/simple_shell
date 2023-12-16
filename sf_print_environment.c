@@ -2,10 +2,9 @@
 
 /**
  * print_env - print environmental variables
- * @argv: argument vector
  * @env: environment variables
  */
-void print_env(char **argv, char **env)
+void print_env(char **env)
 {
 	int i = 0;
 	int l = 0;

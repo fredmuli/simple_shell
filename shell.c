@@ -7,9 +7,10 @@
  *
  * Return: 0
  */
-int main(int ac __attribute__((unused)), char **av)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char *line;
+	char buffer[1024];
 
 	if (isatty(STDIN_FILENO))
 	{
@@ -23,7 +24,10 @@ int main(int ac __attribute__((unused)), char **av)
 	}
 	else
 	{
-		printf("Standard input is not associated with terminal\n");
+		if (fgets(buffer, 1024, stdin) != NULL)
+		{
+			process_terminal_command(buffer);
+		}
 	}
 	return (EXIT_SUCCESS);
 }
